@@ -1,0 +1,20 @@
+{% load cms_tags sekizai_tags static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% page_attribute "page_title" %}</title>
+    {% render_block "css" %}
+    <!--    <link rel="stylesheet" href="style.css">-->
+</head>
+<body>
+    {% cms_toolbar %}
+    {% placeholder "content" %}
+    {% render_block "js" %}
+
+    <!--	<script src="index.js"></script>-->
+    <img src="{% static '/statimgs/me.jpg' %}" alt="My headshot">
+</body>
+</html>
