@@ -2,7 +2,7 @@ import pandas as pd
 import plotly.offline as pyo
 import plotly.graph_objs as go
 from plotly.subplots import make_subplots
-from plotly import tools
+
 
 # # df = pd.read_csv('../data/2010SantaBarbaraCA.csv')
 # df = pd.read_csv('../data/2010YumaAZ.csv')
@@ -59,6 +59,7 @@ trace3 = go.Heatmap(
 )
 
 data = [trace1, trace2, trace3]
+
 
 fig = make_subplots(
     rows=1,
