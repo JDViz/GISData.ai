@@ -17,6 +17,7 @@ import pandas as pd
 # Launch the application:
 app = dash.Dash()
 
+
 # Create a DataFrame from the .csv file:
 df = pd.read_csv('../data/OldFaithful.csv')
 

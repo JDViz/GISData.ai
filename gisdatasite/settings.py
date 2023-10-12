@@ -60,6 +60,8 @@ INSTALLED_APPS = [
     'djangocms_googlemap',
     'djangocms_snippet',
     'djangocms_style',
+    'risk_management',
+    # 'gisdatasite/risk_management_poll',
 ]
 
 MIDDLEWARE = [

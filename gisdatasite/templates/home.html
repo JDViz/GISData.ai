@@ -12,7 +12,9 @@
 <body>
 <h1>HOME</h1>
     {% cms_toolbar %}
-    {% placeholder "content" %}
+    {% block content %}
+        {% placeholder "content" %}
+    {% endblock %}
     {% render_block "js" %}
 
     <!--	<script src="index.js"></script>-->

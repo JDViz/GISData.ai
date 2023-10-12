@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: class Div</title>
+</head><body>
+<p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong>dash.html.Div</strong> = <a name="dash.html.Div">class Div</a>(<a href="dash.development.base_component.html#Component">dash.development.base_component.Component</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code">dash.html.Div(children=None,&nbsp;id=undefined,&nbsp;n_clicks=undefined,&nbsp;n_clicks_timestamp=undefined,&nbsp;disable_n_clicks=undefined,&nbsp;key=undefined,&nbsp;accessKey=undefined,&nbsp;className=undefined,&nbsp;contentEditable=undefined,&nbsp;contextMenu=undefined,&nbsp;dir=undefined,&nbsp;draggable=undefined,&nbsp;hidden=undefined,&nbsp;lang=undefined,&nbsp;role=undefined,&nbsp;spellCheck=undefined,&nbsp;style=undefined,&nbsp;tabIndex=undefined,&nbsp;title=undefined,&nbsp;loading_state=undefined,&nbsp;**kwargs)<br>
+&nbsp;<br>
+A&nbsp;Div&nbsp;component.<br>
+Div&nbsp;is&nbsp;a&nbsp;wrapper&nbsp;for&nbsp;the&nbsp;&lt;div&gt;&nbsp;HTML5&nbsp;element.<br>
+For&nbsp;detailed&nbsp;attribute&nbsp;info&nbsp;see:<br>
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div</a><br>
+&nbsp;<br>
+Keyword&nbsp;arguments:<br>
+&nbsp;<br>
+-&nbsp;children&nbsp;(a&nbsp;list&nbsp;of&nbsp;or&nbsp;a&nbsp;singular&nbsp;dash&nbsp;component,&nbsp;string&nbsp;or&nbsp;number;&nbsp;optional):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;children&nbsp;of&nbsp;this&nbsp;component.<br>
+&nbsp;<br>
+-&nbsp;id&nbsp;(string;&nbsp;optional):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;ID&nbsp;of&nbsp;this&nbsp;component,&nbsp;used&nbsp;to&nbsp;identify&nbsp;dash&nbsp;components&nbsp;in<br>
+&nbsp;&nbsp;&nbsp;&nbsp;callbacks.&nbsp;The&nbsp;ID&nbsp;needs&nbsp;to&nbsp;be&nbsp;unique&nbsp;across&nbsp;all&nbsp;of&nbsp;the&nbsp;components<br>
+&nbsp;&nbsp;&nbsp;&nbsp;in&nbsp;an&nbsp;app.<br>
+&nbsp;<br>
+-&nbsp;accessKey&nbsp;(string;&nbsp;optional):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Keyboard&nbsp;shortcut&nbsp;to&nbsp;activate&nbsp;or&nbsp;add&nbsp;focus&nbsp;to&nbsp;the&nbsp;element.<br>
+&nbsp;<br>
+-&nbsp;aria-*&nbsp;(string;&nbsp;optional):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;wildcard&nbsp;aria&nbsp;attribute.<br>
+&nbsp;<br>
+-&nbsp;className&nbsp;(string;&nbsp;optional):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Often&nbsp;used&nbsp;with&nbsp;CSS&nbsp;to&nbsp;style&nbsp;elements&nbsp;with&nbsp;common&nbsp;properties.<br>
+&nbsp;<br>
+-&nbsp;contentEditable&nbsp;(string;&nbsp;optional):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Indicates&nbsp;whether&nbsp;the&nbsp;element's&nbsp;content&nbsp;is&nbsp;editable.<br>
+&nbsp;<br>
+-&nbsp;contextMenu&nbsp;(string;&nbsp;optional):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Defines&nbsp;the&nbsp;ID&nbsp;of&nbsp;a&nbsp;&lt;menu&gt;&nbsp;element&nbsp;which&nbsp;will&nbsp;serve&nbsp;as&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;element's&nbsp;context&nbsp;menu.<br>
+&nbsp;<br>
+-&nbsp;data-*&nbsp;(string;&nbsp;optional):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;wildcard&nbsp;data&nbsp;attribute.<br>
+&nbsp;<br>
+-&nbsp;dir&nbsp;(string;&nbsp;optional):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Defines&nbsp;the&nbsp;text&nbsp;direction.&nbsp;Allowed&nbsp;values&nbsp;are&nbsp;ltr&nbsp;(Left-To-Right)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;rtl&nbsp;(Right-To-Left).<br>
+&nbsp;<br>
+-&nbsp;disable_n_clicks&nbsp;(boolean;&nbsp;optional):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;When&nbsp;True,&nbsp;this&nbsp;will&nbsp;disable&nbsp;the&nbsp;n_clicks&nbsp;prop.&nbsp;&nbsp;Use&nbsp;this&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;remove&nbsp;event&nbsp;listeners&nbsp;that&nbsp;may&nbsp;interfere&nbsp;with&nbsp;screen&nbsp;readers.<br>
+&nbsp;<br>
+-&nbsp;draggable&nbsp;(string;&nbsp;optional):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Defines&nbsp;whether&nbsp;the&nbsp;element&nbsp;can&nbsp;be&nbsp;dragged.<br>
+&nbsp;<br>
+-&nbsp;hidden&nbsp;(a&nbsp;value&nbsp;equal&nbsp;to:&nbsp;'hidden',&nbsp;'HIDDEN'&nbsp;|&nbsp;boolean;&nbsp;optional):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Prevents&nbsp;rendering&nbsp;of&nbsp;given&nbsp;element,&nbsp;while&nbsp;keeping&nbsp;child&nbsp;elements,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;e.g.&nbsp;script&nbsp;elements,&nbsp;active.<br>
+&nbsp;<br>
+-&nbsp;key&nbsp;(string;&nbsp;optional):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;unique&nbsp;identifier&nbsp;for&nbsp;the&nbsp;component,&nbsp;used&nbsp;to&nbsp;improve&nbsp;performance<br>
+&nbsp;&nbsp;&nbsp;&nbsp;by&nbsp;React.js&nbsp;while&nbsp;rendering&nbsp;components&nbsp;See<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://reactjs.org/docs/lists-and-keys.html">https://reactjs.org/docs/lists-and-keys.html</a>&nbsp;for&nbsp;more&nbsp;info.<br>
+&nbsp;<br>
+-&nbsp;lang&nbsp;(string;&nbsp;optional):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Defines&nbsp;the&nbsp;language&nbsp;used&nbsp;in&nbsp;the&nbsp;element.<br>
+&nbsp;<br>
+-&nbsp;loading_state&nbsp;(dict;&nbsp;optional):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Object&nbsp;that&nbsp;holds&nbsp;the&nbsp;loading&nbsp;state&nbsp;object&nbsp;coming&nbsp;from<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dash-renderer.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`loading_state`&nbsp;is&nbsp;a&nbsp;dict&nbsp;with&nbsp;keys:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;component_name&nbsp;(string;&nbsp;optional):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Holds&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;component&nbsp;that&nbsp;is&nbsp;loading.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;is_loading&nbsp;(boolean;&nbsp;optional):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Determines&nbsp;if&nbsp;the&nbsp;component&nbsp;is&nbsp;loading&nbsp;or&nbsp;not.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;prop_name&nbsp;(string;&nbsp;optional):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Holds&nbsp;which&nbsp;property&nbsp;is&nbsp;loading.<br>
+&nbsp;<br>
+-&nbsp;n_clicks&nbsp;(number;&nbsp;default&nbsp;0):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;integer&nbsp;that&nbsp;represents&nbsp;the&nbsp;number&nbsp;of&nbsp;times&nbsp;that&nbsp;this&nbsp;element<br>
+&nbsp;&nbsp;&nbsp;&nbsp;has&nbsp;been&nbsp;clicked&nbsp;on.<br>
+&nbsp;<br>
+-&nbsp;n_clicks_timestamp&nbsp;(number;&nbsp;default&nbsp;-1):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;integer&nbsp;that&nbsp;represents&nbsp;the&nbsp;time&nbsp;(in&nbsp;ms&nbsp;since&nbsp;1970)&nbsp;at&nbsp;which<br>
+&nbsp;&nbsp;&nbsp;&nbsp;n_clicks&nbsp;changed.&nbsp;This&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;tell&nbsp;which&nbsp;button&nbsp;was<br>
+&nbsp;&nbsp;&nbsp;&nbsp;changed&nbsp;most&nbsp;recently.<br>
+&nbsp;<br>
+-&nbsp;role&nbsp;(string;&nbsp;optional):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Defines&nbsp;an&nbsp;explicit&nbsp;role&nbsp;for&nbsp;an&nbsp;element&nbsp;for&nbsp;use&nbsp;by&nbsp;assistive<br>
+&nbsp;&nbsp;&nbsp;&nbsp;technologies.<br>
+&nbsp;<br>
+-&nbsp;spellCheck&nbsp;(string;&nbsp;optional):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Indicates&nbsp;whether&nbsp;spell&nbsp;checking&nbsp;is&nbsp;allowed&nbsp;for&nbsp;the&nbsp;element.<br>
+&nbsp;<br>
+-&nbsp;style&nbsp;(dict;&nbsp;optional):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Defines&nbsp;CSS&nbsp;styles&nbsp;which&nbsp;will&nbsp;override&nbsp;styles&nbsp;previously&nbsp;set.<br>
+&nbsp;<br>
+-&nbsp;tabIndex&nbsp;(string;&nbsp;optional):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Overrides&nbsp;the&nbsp;browser's&nbsp;default&nbsp;tab&nbsp;order&nbsp;and&nbsp;follows&nbsp;the&nbsp;one<br>
+&nbsp;&nbsp;&nbsp;&nbsp;specified&nbsp;instead.<br>
+&nbsp;<br>
+-&nbsp;title&nbsp;(string;&nbsp;optional):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Text&nbsp;to&nbsp;be&nbsp;displayed&nbsp;in&nbsp;a&nbsp;tooltip&nbsp;when&nbsp;hovering&nbsp;over&nbsp;the&nbsp;element.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="dash.html.Div.html#Div">Div</a></dd>
+<dd><a href="dash.development.base_component.html#Component">dash.development.base_component.Component</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Div-__init__"><strong>__init__</strong></a> = wrapper(self, children=None, id=undefined, n_clicks=undefined, n_clicks_timestamp=undefined, disable_n_clicks=undefined, key=undefined, accessKey=undefined, className=undefined, contentEditable=undefined, contextMenu=undefined, dir=undefined, draggable=undefined, hidden=undefined, lang=undefined, role=undefined, spellCheck=undefined, style=undefined, tabIndex=undefined, title=undefined, loading_state=undefined, **kwargs)</dt></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<hr>
+Methods inherited from <a href="dash.development.base_component.html#Component">dash.development.base_component.Component</a>:<br>
+<dl><dt><a name="Div-__delitem__"><strong>__delitem__</strong></a>(self, id)</dt><dd><span class="code">Delete&nbsp;items&nbsp;by&nbsp;ID&nbsp;in&nbsp;the&nbsp;tree&nbsp;of&nbsp;children.</span></dd></dl>
+
+<dl><dt><a name="Div-__getitem__"><strong>__getitem__</strong></a>(self, id)</dt><dd><span class="code">Recursively&nbsp;find&nbsp;the&nbsp;element&nbsp;with&nbsp;the&nbsp;given&nbsp;ID&nbsp;through&nbsp;the&nbsp;tree&nbsp;of<br>
+children.</span></dd></dl>
+
+<dl><dt><a name="Div-__iter__"><strong>__iter__</strong></a>(self)</dt><dd><span class="code">Yield&nbsp;IDs&nbsp;in&nbsp;the&nbsp;tree&nbsp;of&nbsp;children.</span></dd></dl>
+
+<dl><dt><a name="Div-__len__"><strong>__len__</strong></a>(self)</dt><dd><span class="code">Return&nbsp;the&nbsp;number&nbsp;of&nbsp;items&nbsp;in&nbsp;the&nbsp;tree.</span></dd></dl>
+
+<dl><dt><a name="Div-__repr__"><strong>__repr__</strong></a>(self)</dt><dd><span class="code">Return&nbsp;repr(self).</span></dd></dl>
+
+<dl><dt><a name="Div-__setitem__"><strong>__setitem__</strong></a>(self, id, item)</dt><dd><span class="code">Set&nbsp;an&nbsp;element&nbsp;by&nbsp;its&nbsp;ID.</span></dd></dl>
+
+<dl><dt><a name="Div-to_plotly_json"><strong>to_plotly_json</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="dash.development.base_component.html#Component">dash.development.base_component.Component</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="dash.development.base_component.html#Component">dash.development.base_component.Component</a>:<br>
+<dl><dt><strong>REQUIRED</strong> = required</dl>
+
+<dl><dt><strong>UNDEFINED</strong> = undefined</dl>
+
+</td></tr></table>
+</body></html>
