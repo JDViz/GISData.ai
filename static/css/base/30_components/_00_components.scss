@@ -1,0 +1,14 @@
+/* **************************************************************************************************************** */
+/* COMPONENTS (or modules) */
+/* **************************************************************************************************************** */
+// Holds all of your styles for buttons, carousels, sliders,
+// and similar page components (think widgets).
+// Your project will typically contain a lot of component files
+// — as the whole site/app should be mostly composed of small modules.
+
+@import "buttons";
+@import "cards";
+@import "carousel";
+@import "sliders";
+@import "parallax";
+@import "tooltip";

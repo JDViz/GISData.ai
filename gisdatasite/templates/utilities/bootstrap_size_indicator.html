@@ -1,0 +1,36 @@
+<style>
+    #size_indicator {
+        border: 3px solid deeppink;
+        width: 100px;
+        {#height: 100px;#}
+        z-index: 10000;
+        position: fixed;
+        bottom: 50px;
+        right: 50px;
+    }
+    .indicator_text {
+        font-size: 2em;
+        color: #fd7e14;
+    }
+    #pixelsize {
+        color: #fd7e14;
+    }
+</style>
+<div id="size_indicator" class="row bg-white">
+    <div class="indicator_text text-center d-none d-xxl-block">XXL</div>
+    <div class="indicator_text text-center d-none d-xl-block d-xxl-none">XL</div>
+    <div class="indicator_text text-center d-none d-lg-block d-xl-none">LG</div>
+    <div class="indicator_text text-center d-none d-md-block d-lg-none">MD</div>
+    <div class="indicator_text text-center d-none d-sm-block d-md-none">SM</div>
+    <div class="indicator_text text-center d-block d-sm-none">XSM</div>
+    <div id="pixelsize" class="col text-center">0000</div>
+</div>
+<script>
+    var w = window.innerWidth;
+    document.getElementById('pixelsize').innerText = w;
+    function getSize() {
+        w = window.innerWidth;
+        document.getElementById('pixelsize').innerText = w;
+    }
+    window.onresize = getSize;
+</script>

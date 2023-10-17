@@ -9,7 +9,8 @@ class AnswerAdmin(admin.ModelAdmin):
 
 @admin.register(Question)
 class QuestionAdmin(admin.ModelAdmin):
-    list_display = ['text']
+    # list_display = ['text']
+    list_display = ['text', 'order']
     filter_horizontal = ('possible_answers',)
 
 
@@ -22,3 +23,7 @@ class MeetingAdmin(admin.ModelAdmin):
 @admin.register(Response)
 class ResponseAdmin(admin.ModelAdmin):
     list_display = ['question', 'answer', 'meeting', 'timestamp']
+
+    def timestamp(self, obj):
+        return obj.timestamp
+    timestamp.short_description = 'Timestamp UTC'
