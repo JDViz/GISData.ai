@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import resolve
-from .models import Meeting, Response
+from .models import Meeting, Response, Question
 from .forms import QuestionnaireForm
 from django.contrib import messages
 
@@ -9,24 +9,33 @@ from django.contrib import messages
 #     meeting = get_object_or_404(Meeting, id=meeting_id)
 #     questions = meeting.questions.all().order_by('order')
 #
-#     if request.method == 'POST':
-#         form = QuestionnaireForm(request.POST, questions=questions)
-#         if form.is_valid():
-#             for question in questions:
-#                 answer = form.cleaned_data[f'question_{question.id}']
-#                 if answer is not None:
-#                     Response.objects.create(
-#                         question=question,
-#                         answer=answer,
-#                         meeting=meeting
-#                     )
-#             messages.success(request, 'Your responses have been recorded. Thank you!')
-#             return redirect('risk_management:thank_you')
-#     else:
-#         form = QuestionnaireForm(questions=questions)
+#     # Fetch the current question from the session or start from the first question
+#     current_question_id = request.session.get('current_question_id', questions.first().id)
+#     question = get_object_or_404(Question, id=current_question_id)
 #
-#     return render(request, 'risk_management/questionnaire.html', {'form': form, 'meeting': meeting})
-
+#     if request.method == 'POST':
+#         form = QuestionnaireForm(request.POST, question=question)
+#         if form.is_valid():
+#             answer = form.cleaned_data['answer']
+#             Response.objects.create(
+#                 question=question,
+#                 answer=answer,
+#                 meeting=meeting
+#             )
+#             # Set the next question based on the selected answer or reset if no next question
+#             if answer and answer.next_question:
+#                 request.session['current_question_id'] = answer.next_question.id
+#                 return redirect('risk_management:questionnaire_view', meeting_id=meeting_id)
+#             else:
+#                 if 'current_question_id' in request.session:
+#                     del request.session['current_question_id']
+#                 return redirect('risk_management:thank_you')
+#
+#     else:
+#         form = QuestionnaireForm(question=question)
+#
+#     return render(request, 'risk_management/questionnaire.html',
+#                   {'form': form, 'meeting': meeting, 'question': question})
 
 def questionnaire_view(request, meeting_id):
     meeting = get_object_or_404(Meeting, id=meeting_id)
@@ -59,8 +68,8 @@ def questionnaire_view(request, meeting_id):
     else:
         form = QuestionnaireForm(question=question)
 
-    return render(request, 'risk_management/questionnaire.html', {'form': form, 'meeting': meeting, 'question': question})
-
+    return render(request, 'risk_management/questionnaire.html',
+                  {'form': form, 'meeting': meeting, 'question': question})
 
 
 def thank_you_view(request):

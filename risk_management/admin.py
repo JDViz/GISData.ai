@@ -4,6 +4,7 @@ from .models import Answer, Question, Meeting, Response
 
 @admin.register(Answer)
 class AnswerAdmin(admin.ModelAdmin):
+    # list_display = ['text', 'next_question']
     list_display = ['text']
 
 
