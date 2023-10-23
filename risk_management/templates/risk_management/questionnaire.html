@@ -2,45 +2,45 @@
 
 {% block content %}
 
-    <div class="container">
-        <div class="row">
-            <div class="col py-5">
-                <h1>{{ meeting.name }}</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col pb-5">
-                <div class="alert alert-info" role="alert">
-                  This form does not collect ANY personal data. The only data collected are the responses and the meeting name (in the title above) that they are associated with.
-                </div>
-                <form method="post">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <input type="submit" value="Submit">
-                </form>
-            </div>
-        </div>
-    </div>
-
-{#        <div class="container">#}
-{#            <div class="row">#}
-{#                <div class="col py-5">#}
-{#                    <h1>{{ meeting.name }} - {{ question.text }}</h1>#}
-{#                </div>#}
-{#            </div>#}
-{#            <div class="row">#}
-{#                <div class="col">#}
-{#                    <div class="alert alert-info" role="alert">#}
-{#                      This form does not collect ANY personal data. The only data collected are the responses and the meeting name (in the title above) that they are associated with.#}
-{#                    </div>#}
-{#                    <form method="post">#}
-{#                        {% csrf_token %}#}
-{#                        {{ form.as_p }}#}
-{#                        <input type="submit" value="Next">#}
-{#                    </form>#}
-{#                </div>#}
+{#    <div class="container">#}
+{#        <div class="row">#}
+{#            <div class="col py-5">#}
+{#                <h1>{{ meeting.name }}</h1>#}
 {#            </div>#}
 {#        </div>#}
+{#        <div class="row">#}
+{#            <div class="col pb-5">#}
+{#                <div class="alert alert-info" role="alert">#}
+{#                  This form does not collect ANY personal data. The only data collected are the responses and the meeting name (in the title above) that they are associated with.#}
+{#                </div>#}
+{#                <form method="post">#}
+{#                    {% csrf_token %}#}
+{#                    {{ form.as_p }}#}
+{#                    <input type="submit" value="Submit">#}
+{#                </form>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+
+        <div class="container">
+            <div class="row">
+                <div class="col py-5">
+                    <h1>{{ meeting.name }} - {{ question.text }}</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="alert alert-info" role="alert">
+                      This form does not collect ANY personal data. The only data collected are the responses and the meeting name (in the title above) that they are associated with.
+                    </div>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <input type="submit" value="Next">
+                    </form>
+                </div>
+            </div>
+        </div>
 
 
 
