@@ -3,6 +3,7 @@ from django.db import models
 
 class Answer(models.Model):
     text = models.CharField(max_length=255)
+
     # next_question = models.ForeignKey('Question', on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
@@ -13,12 +14,25 @@ class Question(models.Model):
     text = models.CharField(max_length=255)
     possible_answers = models.ManyToManyField(Answer)
     order = models.PositiveIntegerField(default=0)
+    conditional_answer = models.ForeignKey(Answer, on_delete=models.SET_NULL, null=True, blank=True, related_name="followup_questions", help_text="If set, this question will only show if the previous question's answer matches this answer.")
 
     def __str__(self):
         return self.text
 
     class Meta:
-        ordering = ['order']  # Add this line
+        ordering = ['order']
+
+
+# class Question(models.Model):
+#     text = models.CharField(max_length=255)
+#     possible_answers = models.ManyToManyField(Answer)
+#     order = models.PositiveIntegerField(default=0)
+#
+#     def __str__(self):
+#         return self.text
+#
+#     class Meta:
+#         ordering = ['order']
 
 
 class Meeting(models.Model):
