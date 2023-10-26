@@ -24,6 +24,8 @@ def questionnaire_view(request, meeting_id):
     if question_index >= len(questions):
         # Remove the question_index from the session since all questions have been answered
         del request.session['question_index']
+        request.session.pop('latest_question', None)  # Remove latest_question if it exists
+        request.session.pop('latest_answer', None)    # Remove latest_answer if it exists
         # Redirect the user to the thank you page
         return redirect('risk_management:thank_you')
 
@@ -55,12 +57,15 @@ def questionnaire_view(request, meeting_id):
     if not question:
         # Remove the question_index from the session
         del request.session['question_index']
+        request.session.pop('latest_question', None)  # Remove latest_question if it exists
+        request.session.pop('latest_answer', None)    # Remove latest_answer if it exists
         # Redirect the user to the thank you page
         return redirect('risk_management:thank_you')
 
     # If the request is a POST request (meaning the form has been submitted)
     if request.method == 'POST':
         form = QuestionnaireForm(request.POST, question=question)
+
         if form.is_valid():
             answer = form.cleaned_data['answer']
             # Create a new Response instance if an answer has been chosen
@@ -70,6 +75,9 @@ def questionnaire_view(request, meeting_id):
                     answer=answer,
                     meeting=meeting
                 )
+                # Store the latest question and answer in session
+                request.session['latest_question'] = question.text
+                request.session['latest_answer'] = answer.text
             # Move on to the next question
             request.session['question_index'] = question_index + 1
             return redirect('risk_management:questionnaire_view', meeting_id=meeting_id)
@@ -79,7 +87,14 @@ def questionnaire_view(request, meeting_id):
 
     # Render the questionnaire template, passing the form, meeting, and question to the context
     return render(request, 'risk_management/questionnaire.html',
-                  {'form': form, 'meeting': meeting, 'question': question})
+                  {
+                      'form': form,
+                      'meeting': meeting,
+                      'question': question,
+                      'latest_question': request.session.get('latest_question'),
+                      'latest_answer': request.session.get('latest_answer'),
+                      'conditional': question.conditional_answer,
+                  })
 
 
 def thank_you_view(request):

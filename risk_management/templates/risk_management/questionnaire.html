@@ -5,7 +5,8 @@
         <div class="container">
             <div class="row">
                 <div class="col py-5">
-                    <h1>{{ meeting.name }} - {{ question.text }}</h1>
+{#                    <h1>{{ meeting.name }} - {{ question.text }}</h1>#}
+                    <h1>{{ meeting.name }}</h1>
                 </div>
             </div>
             <div class="row">
@@ -13,11 +14,38 @@
                     <div class="alert alert-info" role="alert">
                       This form does not collect ANY personal data. The only data collected are the responses and the meeting name (in the title above) that they are associated with.
                     </div>
+                </div>
+            </div>
+
+            {% if latest_question and latest_answer %}
+            <div class="row">
+                <div class="col">
+                    <div class="alert alert-success">
+                        Previous:<br/>
+                        {{ latest_question }} - {{ latest_answer }}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if conditional %}
+            <div class="row">
+                <div class="col">
+                    <div class="alert alert-success">
+                        Previous:<br/>
+                        {{ conditional }}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            <div class="row">
+                <div class="col">
                     <form method="post">
                         {% csrf_token %}
                         {{ form.as_p }}
-                        <input type="submit" value="Next">
-                        <button type="submit" name="reset" value="true">Reset</button>
+                        <button type="submit" name="next" value="Next" class="btn btn-primary">Next</button>
+                        <button type="submit" name="reset" value="true" class="btn btn-warning float-end" >Reset</button>
                     </form>
                 </div>
             </div>

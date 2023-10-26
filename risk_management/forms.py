@@ -17,6 +17,6 @@ class QuestionnaireForm(forms.ModelForm):
         question = kwargs.pop('question', None)
         super().__init__(*args, **kwargs)
         if question:
-            self.fields['answer'].queryset = question.possible_answers.all()
+            self.fields['answer'].queryset = question.possible_answers.all().order_by('order')
             self.fields['answer'].label = question.text
 
