@@ -1846,6 +1846,21 @@
       "pg" : 0,
       "sct" : 0
     },
+    "\/static\/css\/base\/50_pages\/dashboard.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "dP" : 10,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 0,
+      "oAP" : "\/static\/css\/base\/50_pages\/dashboard.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "sct" : 0
+    },
     "\/static\/css\/base\/60_themes\/_00_themes.scss" : {
       "aP" : 0,
       "bl" : 0,

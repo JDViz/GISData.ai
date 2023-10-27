@@ -1,42 +1,65 @@
 {% extends 'home.html' %}
+{% load cms_tags sekizai_tags static %}
+
+{% block css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static '/css/base/50_pages/dashboard.css' %}">
+{% endblock css %}
 
 {% block content %}
 
-<div class="container">
-
-    <div class="row">
-        <div class="col py-5">
-            <h1>Answer Data Visualization</h1>
-        </div>
+    <div id="reloadBtnBox">
+        <button type="button" id="reloadButton" class="btn btn-info">Reload Page</button>
     </div>
 
-    <div class="row">
-        <div class="col">
-            <!-- Aggregate Plot -->
-            {{ aggregate_plot_div|safe }}
-        </div>
-    </div>
+    <div class="container">
 
-    <!-- Individual Question Plots -->
-    {% for plot in plots %}
-    <div class="row mt-5">
-        <div class="col">
-            {{ plot|safe }}
-        </div>
-    </div>
-    {% endfor %}
+        <div class="row">
+            <div class="col py-5">
+                <h1>Answer Data Visualization</h1>
 
-    <div class="row">
-        <div class="col">
-            <h3>List of Questions:</h3>
-            <ul>
-            {% for question in questions %}
-                <li>{{ question.text }}</li>
-            {% endfor %}
-            </ul>
+            </div>
         </div>
-    </div>
 
-</div><!-- container end -->
+        <div class="row">
+            <div class="col">
+                <!-- Aggregate Plot -->
+                {{ aggregate_plot_div|safe }}
+            </div>
+        </div>
+
+        <!-- Individual Question Plots -->
+        {% for plot in plots %}
+        <div class="row mt-5">
+            <div class="col">
+                {{ plot|safe }}
+            </div>
+        </div>
+        {% endfor %}
+
+        <div class="row">
+            <div class="col">
+                <h3>List of Questions:</h3>
+                <ul>
+                {% for question in questions %}
+                    <li>{{ question.text }}</li>
+                {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+    </div><!-- container end -->
+
+    <script>
+
+
+        document.getElementById('reloadButton').addEventListener('click', function() {
+            location.reload();
+        });
+
+        {#setTimeout(function(){#}
+        {#    location.reload();#}
+        {#}, 5000);  // 5000 milliseconds = 5 seconds#}
+    </script>
 
 {% endblock content %}
