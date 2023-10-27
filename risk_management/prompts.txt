@@ -350,5 +350,50 @@ In templates/thank_you.html
 {% endblock content %}
 
 ____________
+In templates/dataview.html
 
-Here is my question. How do I generate a page of plot.ly graphs from the data collected in the answers?
+{% extends 'home.html' %}
+
+{% block content %}
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col py-5">
+
+                <h1>Answer Data Visualization</h1>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+
+                {{ plot_div|safe }}
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+
+                <h3>List of Questions:</h3>
+
+                <ul>
+                {% for question in questions %}
+
+                    <li>{{ question }}</li>
+
+                {% endfor %}
+                </ul>
+
+            </div>
+        </div>
+
+    </div><!-- container end -->
+
+{% endblock content %}
+
+____________
+
+Here is my question. How do I add more plots to the data_view, such as a graph for each separate question's responses, only pulling data from the responses table?

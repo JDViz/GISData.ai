@@ -2,8 +2,7 @@ import dash
 from dash import dcc
 from dash import html
 from dash.dependencies import Input, Output
-import plotly.graph_objs as go
-import pandas as pd
+
 
 app = dash.Dash()
 
