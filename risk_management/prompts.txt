@@ -1,3 +1,134 @@
+Act as a django web developer. Here is a django app called risk_management. 
+
+Here is the code. My question is at the end, after the code.
+
+____________
+In models.py;
+
+from django.db import models
+
+
+class Answer(models.Model):
+    text = models.CharField(max_length=255)
+    order = models.PositiveIntegerField(default=0)
+
+    # next_question = models.ForeignKey('Question', on_delete=models.SET_NULL, null=True, blank=True)
+
+    def __str__(self):
+        return self.text
+
+    class Meta:
+        ordering = ['order']
+
+
+class Question(models.Model):
+    text = models.CharField(max_length=255)
+    possible_answers = models.ManyToManyField(Answer)
+    order = models.PositiveIntegerField(default=0)
+    conditional_answer = models.ForeignKey(Answer, on_delete=models.SET_NULL, null=True, blank=True, related_name="followup_questions", help_text="Contingent Answer.")
+
+    def __str__(self):
+        return self.text
+
+    class Meta:
+        ordering = ['order', 'text']
+
+
+class Meeting(models.Model):
+    name = models.CharField(max_length=255)
+    questions = models.ManyToManyField(Question)
+
+    def __str__(self):
+        return self.name
+
+
+class Response(models.Model):
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    answer = models.ForeignKey(Answer, null=True, blank=True, on_delete=models.CASCADE)
+    meeting = models.ForeignKey(Meeting, on_delete=models.CASCADE)
+    timestamp = models.DateTimeField(auto_now_add=True, verbose_name="Timestamp UTC")
+
+    def __str__(self):
+        return f"{self.meeting.name} - {self.question.text} - {self.answer.text}"
+
+
+
+____________
+In admin.py
+
+from django.contrib import admin
+from .models import Answer, Question, Meeting, Response
+
+
+class AnswerInline(admin.TabularInline):  # or use admin.StackedInline for a different visual presentation
+    model = Question.possible_answers.through
+    extra = 1  # number of empty forms presented
+    readonly_fields = ('id',)
+    ordering = ['answer__order', 'answer__text']
+
+
+@admin.register(Answer)
+class AnswerAdmin(admin.ModelAdmin):
+    # list_display = ['text', 'next_question']
+    list_display = ['text', 'order']
+    list_editable = ['order']
+
+
+@admin.register(Question)
+class QuestionAdmin(admin.ModelAdmin):
+    # list_display = ['text']
+    list_display = ['text', 'order']
+    list_editable = ['order']
+    filter_horizontal = ('possible_answers',)
+
+
+@admin.register(Meeting)
+class MeetingAdmin(admin.ModelAdmin):
+    list_display = ['name']
+    filter_horizontal = ('questions',)
+
+
+@admin.register(Response)
+class ResponseAdmin(admin.ModelAdmin):
+    list_display = ['question', 'answer', 'meeting', 'timestamp']
+
+    def timestamp(self, obj):
+        return obj.timestamp
+    timestamp.short_description = 'Timestamp UTC'
+
+
+
+____________
+In forms.py
+
+from django import forms
+from .models import Response
+
+
+class QuestionnaireForm(forms.ModelForm):
+    class Meta:
+        model = Response
+        fields = ['answer']
+
+    answer = forms.ModelChoiceField(
+        queryset=None,
+        widget=forms.RadioSelect,
+        required=False
+    )
+
+    def __init__(self, *args, **kwargs):
+        question = kwargs.pop('question', None)
+        super().__init__(*args, **kwargs)
+        if question:
+            self.fields['answer'].queryset = question.possible_answers.all().order_by('order')
+            self.fields['answer'].label = question.text
+
+
+
+
+____________
+In views.py
+
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Count
 from .models import Meeting, Response, Question, Answer
@@ -128,3 +259,96 @@ def data_view(request):
         'plot_div': plot_div,
         'questions': questions,
     })
+
+
+
+____________
+In urls.py
+
+from django.urls import path
+from . import views
+
+app_name = 'risk_management'
+
+urlpatterns = [
+    path('questionnaire/<int:meeting_id>/', views.questionnaire_view, name='questionnaire_view'),
+    path('thank_you/', views.thank_you_view, name='thank_you'),
+    path('dataview/', views.data_view, name='data_view'),
+    # Add more paths as needed
+]
+
+
+____________
+In templates/questionnaire.html
+
+{% extends 'home.html' %}
+
+{% block content %}
+
+        <div class="container">
+            <div class="row">
+                <div class="col py-5">
+{#                    <h1>{{ meeting.name }} - {{ question.text }}</h1>#}
+                    <h1>{{ meeting.name }}</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="alert alert-info" role="alert">
+                      This form does not collect ANY personal data. The only data collected are the responses and the meeting name (in the title above) that they are associated with.
+                    </div>
+                </div>
+            </div>
+
+            {% if latest_question and latest_answer %}
+            <div class="row">
+                <div class="col">
+                    <div class="alert alert-success">
+                        Previous:<br/>
+                        {{ latest_question }} - {{ latest_answer }}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if conditional %}
+            <div class="row">
+                <div class="col">
+                    <div class="alert alert-success">
+                        Previous:<br/>
+                        {{ conditional }}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            <div class="row">
+                <div class="col">
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" name="next" value="Next" class="btn btn-primary">Next</button>
+                        <button type="submit" name="reset" value="true" class="btn btn-warning float-end" >Reset</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+{% endblock content %}
+
+
+____________
+In templates/thank_you.html
+
+{% extends 'home.html' %}
+
+{% block content %}
+
+  <h1>Thank You!</h1>
+  <p>Your responses have been recorded.</p>
+
+{% endblock content %}
+
+____________
+
+Here is my question. How do I generate a page of plot.ly graphs from the data collected in the answers?

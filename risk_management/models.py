@@ -27,18 +27,6 @@ class Question(models.Model):
         ordering = ['order', 'text']
 
 
-# class Question(models.Model):
-#     text = models.CharField(max_length=255)
-#     possible_answers = models.ManyToManyField(Answer)
-#     order = models.PositiveIntegerField(default=0)
-#
-#     def __str__(self):
-#         return self.text
-#
-#     class Meta:
-#         ordering = ['order']
-
-
 class Meeting(models.Model):
     name = models.CharField(max_length=255)
     questions = models.ManyToManyField(Question)
