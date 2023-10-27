@@ -107,24 +107,39 @@ def thank_you_view(request):
 
 
 def data_view(request):
-    # Aggregate your data here.
-    # As an example, we'll count the number of responses for each answer.
-    data = Response.objects.values('answer__text').annotate(count=Count('answer')).order_by('-count')
-    questions = Response.objects.values_list('question__text', flat=True).distinct()
-    # questions = Response.objects.values('question__text')
+    # Your existing aggregate data
+    aggregate_data = Response.objects.values('answer__text').annotate(count=Count('answer')).order_by('-count')
 
-    # Extract data for plotting
-    answers = [item['answer__text'] for item in data]
-    counts = [item['count'] for item in data]
-
-    # Create a bar plot
+    # Extract data for existing plot
+    answers = [item['answer__text'] for item in aggregate_data]
+    counts = [item['count'] for item in aggregate_data]
     trace = go.Bar(x=answers, y=counts)
-    layout = go.Layout(title='Answers Distribution')
+    layout = go.Layout(title='Overall Answers Distribution')
     fig = go.Figure(data=[trace], layout=layout)
-    plot_div = pyo.plot(fig, output_type='div', show_link=False)
+    aggregate_plot_div = pyo.plot(fig, output_type='div', show_link=False)
 
-    # Pass the generated plot to the template
+    # Generate a plot for each question's responses
+    questions = Question.objects.all()
+    plots = []
+
+    for question in questions:
+        data = Response.objects.filter(question=question).values('answer__text').annotate(count=Count('answer'))
+
+        # Extract data for plotting
+        answers = [item['answer__text'] for item in data]
+        counts = [item['count'] for item in data]
+
+        trace = go.Bar(x=answers, y=counts)
+        layout = go.Layout(title=f'Responses for: {question.text}')
+        fig = go.Figure(data=[trace], layout=layout)
+
+        plot_div = pyo.plot(fig, output_type='div', show_link=False)
+        plots.append(plot_div)
+
+    # Pass the generated plots to the template
     return render(request, 'risk_management/dataview.html', context={
-        'plot_div': plot_div,
+        'aggregate_plot_div': aggregate_plot_div,
+        'plots': plots,
         'questions': questions,
     })
+

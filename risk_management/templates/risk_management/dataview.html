@@ -2,40 +2,41 @@
 
 {% block content %}
 
-    <div class="container">
+<div class="container">
 
-        <div class="row">
-            <div class="col py-5">
-
-                <h1>Answer Data Visualization</h1>
-
-            </div>
+    <div class="row">
+        <div class="col py-5">
+            <h1>Answer Data Visualization</h1>
         </div>
+    </div>
 
-        <div class="row">
-            <div class="col">
-
-                {{ plot_div|safe }}
-
-            </div>
+    <div class="row">
+        <div class="col">
+            <!-- Aggregate Plot -->
+            {{ aggregate_plot_div|safe }}
         </div>
+    </div>
 
-        <div class="row">
-            <div class="col">
-
-                <h3>List of Questions:</h3>
-
-                <ul>
-                {% for question in questions %}
-
-                    <li>{{ question }}</li>
-
-                {% endfor %}
-                </ul>
-
-            </div>
+    <!-- Individual Question Plots -->
+    {% for plot in plots %}
+    <div class="row mt-5">
+        <div class="col">
+            {{ plot|safe }}
         </div>
+    </div>
+    {% endfor %}
 
-    </div><!-- container end -->
+    <div class="row">
+        <div class="col">
+            <h3>List of Questions:</h3>
+            <ul>
+            {% for question in questions %}
+                <li>{{ question.text }}</li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+</div><!-- container end -->
 
 {% endblock content %}
