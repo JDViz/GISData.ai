@@ -4,8 +4,13 @@ from .models import Meeting, Response, Question, Answer
 from .forms import QuestionnaireForm
 import plotly.offline as pyo
 import plotly.graph_objs as go
+from django_plotly_dash import DjangoDash
+from . import dash_apps
 import pandas as pd
 # from django.contrib import messages
+
+
+app = DjangoDash('RiskManagementDashboard')
 
 
 def questionnaire_view(request, meeting_id):
@@ -142,4 +147,8 @@ def data_view(request):
         'plots': plots,
         'questions': questions,
     })
+
+
+def risk_management_dashboard(request):
+    return render(request, 'risk_management/dashboard1.html')
 

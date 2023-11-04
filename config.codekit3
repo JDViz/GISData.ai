@@ -1146,6 +1146,14 @@
       "oAP" : "\/risk_management\/__pycache__\/apps.cpython-311.pyc",
       "oF" : 0
     },
+    "\/risk_management\/__pycache__\/dash_apps.cpython-311.pyc" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/risk_management\/__pycache__\/dash_apps.cpython-311.pyc",
+      "oF" : 0
+    },
     "\/risk_management\/__pycache__\/forms.cpython-311.pyc" : {
       "cB" : 0,
       "ft" : 8192,
@@ -1192,6 +1200,14 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/risk_management\/apps.py",
+      "oF" : 0
+    },
+    "\/risk_management\/dash_apps.py" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/risk_management\/dash_apps.py",
       "oF" : 0
     },
     "\/risk_management\/forms.py" : {
@@ -1376,6 +1392,14 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/risk_management\/prompts.txt",
+      "oF" : 0
+    },
+    "\/risk_management\/templates\/risk_management\/dashboard1.html" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/risk_management\/templates\/risk_management\/dashboard1.html",
       "oF" : 0
     },
     "\/risk_management\/templates\/risk_management\/dataview.html" : {
@@ -1845,6 +1869,18 @@
       "oS" : 0,
       "pg" : 0,
       "sct" : 0
+    },
+    "\/static\/css\/base\/50_pages\/dashboard.css" : {
+      "aP" : 1,
+      "bl" : 0,
+      "ci" : 0,
+      "co" : 0,
+      "ft" : 16,
+      "ma" : 0,
+      "oA" : 0,
+      "oAP" : "\/static\/css\/base\/50_pages\/dashboard-min.css",
+      "oF" : 0,
+      "pg" : 0
     },
     "\/static\/css\/base\/50_pages\/dashboard.scss" : {
       "aP" : 0,

@@ -18,11 +18,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, re_path, include
+# from . import plotly_app
 
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
     path('', include('risk_management.urls')),
+    path('django_plotly_dash/', include('django_plotly_dash.urls', namespace='the_django_plotly_dash')),
     re_path(r'^admin/', admin.site.urls),
     re_path(r'^', include('cms.urls')),
 ]

@@ -1,0 +1,11 @@
+{% extends 'home.html' %}
+{% load plotly_dash %}
+
+{% block content %}
+  <h1>Risk Management Dashboard</h1>
+
+  <div class="dashboard-container">
+    {% plotly_app name="RiskManagementDashboard" %}
+  </div>
+
+{% endblock %}

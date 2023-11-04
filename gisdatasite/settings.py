@@ -60,7 +60,11 @@ INSTALLED_APPS = [
     'djangocms_googlemap',
     'djangocms_snippet',
     'djangocms_style',
+    # 'django_plotly_dash',
+    'django_plotly_dash.apps.DjangoPlotlyDashConfig',
+    # 'django_plotly_dash.apps.DjangoPlotlyDashConfig',
     'risk_management',
+    # 'dash_app',
     # 'gisdatasite/risk_management_poll',
 ]
 
@@ -74,6 +78,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+    'django_plotly_dash.middleware.BaseMiddleware',
+    'django_plotly_dash.middleware.ExternalRedirectionMiddleware',
     # 'cms.middleware.utils.ApphookReloadMiddleware'
     'cms.middleware.user.CurrentUserMiddleware',
     'cms.middleware.page.CurrentPageMiddleware',
@@ -195,7 +201,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+# STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
