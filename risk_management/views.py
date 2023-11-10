@@ -5,12 +5,10 @@ from .forms import QuestionnaireForm
 import plotly.offline as pyo
 import plotly.graph_objs as go
 from django_plotly_dash import DjangoDash
-from . import dash_apps
+from .dash_apps import app
 import pandas as pd
-# from django.contrib import messages
 
 
-app = DjangoDash('RiskManagementDashboard')
 
 
 def questionnaire_view(request, meeting_id):

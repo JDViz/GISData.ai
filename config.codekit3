@@ -1394,6 +1394,14 @@
       "oAP" : "\/risk_management\/prompts.txt",
       "oF" : 0
     },
+    "\/risk_management\/prompts2.txt" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/risk_management\/prompts2.txt",
+      "oF" : 0
+    },
     "\/risk_management\/templates\/risk_management\/dashboard1.html" : {
       "cB" : 0,
       "ft" : 8192,
